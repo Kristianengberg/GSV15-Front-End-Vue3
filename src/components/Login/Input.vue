@@ -6,14 +6,12 @@
           <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
           <div class="mt-1">
             <input
-              type="text"
-              name="email"
-              id="email"
-              class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-              placeholder="you@example.com"
+              type="email"
+              :class="[errors.email ? 'border-red-300' : '', 'p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest']"
+              placeholder="Email"
               v-model="form.email"
             />
-            <p class="mt-2 text-small text-red-600" v-if="errors.email">{{ errors.email[0] }}</p>
+            <div class="mt-2 text-small text-red-600" v-if="errors.email">{{ errors.email[0] }}</div>
           </div>
         </div>
         <div>
@@ -21,9 +19,8 @@
           <div class="mt-1">
             <input
               type="password"
-              name="password"
-              id="password"
-              class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              :class="[errors.password ? 'border-red-300' : '', 'p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest']"
+              placeholder="Password"
               v-model="form.password"
             />
             <p class="mt-2 text-small text-red-600" v-if="errors.password">{{ errors.password[0] }}</p>
@@ -60,6 +57,8 @@ export default {
 
     const store = useStore()
 
+    const loading = false
+
     const form = reactive({
       email: '',
       password: '',
@@ -69,22 +68,19 @@ export default {
       errors.value = {}
       console.log('attempting login')
       store.dispatch('login', form)
-        .then(() => {
-          router.replace({ name: 'home' })
-        })
         .catch((e) => {
           if (e.response.status === 422) {
             errors.value = e.response.data.errors;
           }
         });
-
     }
 
 
     return {
       form,
       login,
-      errors
+      errors,
+      loading
     };
   },
 };

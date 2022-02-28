@@ -3,7 +3,6 @@ import { ref } from '@vue/reactivity'
 import { onMounted } from 'vue'
 export default {
 
-
     setup(props, context) {
 
         const el = ref(null)

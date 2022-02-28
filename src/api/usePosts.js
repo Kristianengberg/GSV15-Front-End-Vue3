@@ -10,14 +10,14 @@ export default function usePosts() {
      let response = await axios.get(`/api/get/posts?page=${page}`)
         posts.value = response.data.data
         pagination.value = response.data.meta.last_page
-        console.log(response.data)
+        
     }
 
     const fetchUserPosts = async(page) => {
         let response = await axios.get(`/api/get/user/posts?page=${page}`)
         posts.value = response.data.data
         pagination.value = response.data.meta.last_page
-        console.log(response.data)
+        
     }
 
 

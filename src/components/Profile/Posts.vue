@@ -80,9 +80,6 @@ export default {
 
         onMounted(fetchUserPosts(pagination.value))
 
-
-
-
         const nextPage = () => {
             if (pagination.value < usePagination.value) {
                 pagination.value++

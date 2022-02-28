@@ -1,18 +1,17 @@
 import {createStore} from 'vuex'
-
+import router from '../router'
 
 import axios from 'axios'
-import { useRouter } from 'vue-router'
 
-const router = useRouter()
 
 export default createStore({
 
     state() {
-
+  
         return {
             authenticated: false,
-            user: null
+            user: null,
+
         }
     },
 
@@ -55,17 +54,24 @@ export default createStore({
         },
 
         async login({ dispatch }, credentials) {
+            
             await axios.get('/sanctum/csrf-cookie')
             await axios.post('/login', credentials)
 
-            dispatch('authenticate')
+            dispatch('authenticate').then(()=> {
+                router.replace({ name: 'home' })
+            })
+
+
         },
 
         async register({ dispatch }, credentials) {
             await axios.get('/sanctum/csrf-cookie')
             await axios.post('/register', credentials)
 
-            dispatch('authenticate')
+            dispatch('authenticate').then(()=> {
+                router.replace({ name: 'home' })
+            })
         },
 
         async editProfileInfo({ commit }, form) {

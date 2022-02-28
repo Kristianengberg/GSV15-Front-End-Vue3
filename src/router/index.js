@@ -49,28 +49,7 @@ const routes = [
             return next()
         }
     },
-/*   
-    {
-        path: '/admin/posts/:uuid/edit',
-        name: 'admin.posts.edit',
-        component: Edit,
-        props: true,
-        beforeEnter: (to, from, next) => {
-            
-            if (!store.getters.authenticated) {
-                return next({ name: 'admin.login'})
-            }
 
-            return next();
-        }
-    },
-
-    {
-        path: '/posts/:slug',
-        name: 'post',
-        component: Post,
-        props: true
-    } */
 ]
 
 

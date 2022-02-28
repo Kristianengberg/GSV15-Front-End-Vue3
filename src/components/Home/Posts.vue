@@ -9,7 +9,7 @@
                             v-on:input="resize"
                             v-model="data.data.body"
                             type="text"
-                            class="w-full leading-5 tracking-tight text-gray-900 border-none focus:ring-0 resize-none p-2"
+                            class="w-full leading-5 tracking-tight bg-gray-100 text-gray-900 border-none focus:ring-0 resize-none p-2"
                             placeholder="Skriv noget sejt!"
                         />
                     </template>

@@ -41,43 +41,48 @@
                             <div class="m-4">
                                 <input
                                     type="email"
-                                    class="p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest"
+                                    :class="[errors.email ? 'border-red-300' : '', 'p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest']"
                                     placeholder="Email"
                                     v-model="form.email"
                                 />
+                                <div v-if="errors.email">{{ errors.email[0] }}</div>
                             </div>
                             <div class="m-4">
                                 <input
                                     type="text"
-                                    class="p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest"
+                                    :class="[errors.name ? 'border-red-300' : '', 'p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest']"
                                     placeholder="Name"
                                     v-model="form.name"
                                 />
+                                <div v-if="errors.name">{{ errors.name[0] }}</div>
                             </div>
                             <div class="m-4">
                                 <input
                                     type="text"
-                                    class="p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest"
+                                    :class="[errors.username ? 'border-red-300' : '', 'p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest']"
                                     placeholder="Username"
                                     v-model="form.username"
                                 />
+                                <div v-if="errors.username">{{ errors.username[0] }}</div>
                             </div>
 
                             <div class="m-4">
                                 <input
                                     type="password"
-                                    class="p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest"
+                                    :class="[errors.password ? 'border-red-300' : '', 'p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest']"
                                     placeholder="Password"
                                     v-model="form.password"
                                 />
+                                <div v-if="errors.password">{{ errors.password[0] }}</div>
                             </div>
                             <div class="m-4">
                                 <input
                                     type="password"
-                                    class="p-4 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest"
+                                    :class="[errors.password ? 'border-red-300' : '', 'p-3 border rounded-md w-full h-10 text-sm font-medium text-gray-900 dark:text-gray-lightest']"
                                     placeholder="Repeat Password"
                                     v-model="form.password_confirmation"
                                 />
+                                <div v-if="errors.email">{{ errors.password[0] }}</div>
                             </div>
 
                             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -158,7 +163,8 @@ export default {
             open,
             closeModal,
             form,
-            register
+            register,
+            errors
         };
     },
 
